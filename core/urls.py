@@ -25,9 +25,14 @@ from rest_framework_simplejwt.views import (
 )
 
 from usuarios.views import UsuarioViewSet
+from produtos.views import ProductViewSet, StoreViewSet, PriceViewSet, CategoryViewSet
 
 router = routers.DefaultRouter()
-router.register(r"users", UsuarioViewSet)
+router.register(r"users", UsuarioViewSet, basename="user")
+router.register(r"products", ProductViewSet, basename="product")
+router.register(r"stores", StoreViewSet, basename="store")
+router.register(r"prices", PriceViewSet, basename="price")
+router.register(r"categories", CategoryViewSet, basename="category")
 
 urlpatterns = [
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
